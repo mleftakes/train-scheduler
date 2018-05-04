@@ -18,7 +18,7 @@ var config = {
     var trainName = $("#name-input").val().trim();
     var destinationName = $("#destination-input").val().trim();
     var time = moment($("#time-input").val().trim(), "HH:mm").format("X");
-    var frequency = $("#frequency-input").val().trim();
+    var frequency = parseInt($("#frequency-input").val().trim());
 
     var newTrain = {
         name: trainName,
@@ -45,6 +45,10 @@ var config = {
     var destinationName = childSnapshot.val().destination;
     var time = childSnapshot.val().time;
     var frequency = childSnapshot.val().frequency;
+
+    // var displayFrequency = moment($(childSnapshot).val().frequency, "HH:mm").format("X");
+
+   
 
 //   // Prettify the employee start
 //   var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
@@ -92,7 +96,7 @@ var config = {
 
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destinationName + "</td><td>" +
-  nextTrain + "</td><td>" + frequency + "</td><td>");
+  frequency + " mins"+ "</td><td>" + moment(nextTrain).format("hh:mm") + "</td><td>" + tMinutesTillTrain + "</td><td>")
 });
 
   
